@@ -1,0 +1,13 @@
+2025-10-19 22:37:32 | INFO | Weather Data Pipeline initialized
+2025-10-19 22:37:32 | INFO | Starting weather data collection for cities: ['London', 'New York', 'Tokyo', 'Paris', 'Sydney']
+2025-10-19 22:37:32 | INFO | Fetching weather data for London
+2025-10-19 22:37:32 | INFO | Fetching weather data for London
+2025-10-19 22:37:33 | INFO | Fetching weather data for New York
+2025-10-19 22:37:34 | INFO | Fetching weather data for Tokyo
+2025-10-19 22:37:35 | INFO | Fetching weather data for Paris
+2025-10-19 22:37:36 | INFO | Fetching weather data for Sydney
+2025-10-19 22:37:38 | INFO | Successfully fetched weather data for 5/5 cities
+2025-10-19 22:37:38 | INFO | Filtered 5/5 valid records
+2025-10-19 22:37:38 | INFO | Successfully stored 5 weather records
+2025-10-19 22:37:38 | INFO | Collection completed successfully: {'status': 'success', 'collection_time': datetime.datetime(2025, 10, 19, 19, 37, 38, 12231), 'cities_requested': 5, 'cities_received': 5, 'records_validated': 5, 'records_stored': 5}
+2025-10-19 22:37:38 | INFO | Cleaning up pipeline resources...
