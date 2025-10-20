@@ -13,11 +13,46 @@ st.set_page_config(
 )
 
 # --- GCP SETUP ---
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "gcp_key.json"
-PROJECT_ID = "weather-etl-project-475620"
+# --- GCP SETUP ---
+def get_bigquery_client():
+    try:
+        # Method 1: Using service account info from secrets
+        service_account_info = {
+            "type": "service_account",
+            "project_id": st.secrets["gcp"]["project_id"],
+            "private_key_id": st.secrets["gcp"]["private_key_id"],
+            "private_key": st.secrets["gcp"]["private_key"],
+            "client_email": st.secrets["gcp"]["client_email"],
+            "client_id": st.secrets["gcp"]["client_id"],
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+            "token_uri": "https://oauth2.googleapis.com/token",
+            "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+            "client_x509_cert_url": st.secrets["gcp"]["client_x509_cert_url"]
+        }
+        
+        from google.oauth2 import service_account
+        credentials = service_account.Credentials.from_service_account_info(service_account_info)
+        client = bigquery.Client(credentials=credentials, project=st.secrets["gcp"]["project_id"])
+        return client
+        
+    except Exception as e:
+        st.error(f"❌ Error connecting to BigQuery: {e}")
+        return None
 
 # Initialize BigQuery Client
-client = bigquery.Client(project=PROJECT_ID)
+PROJECT_ID = "weather-etl-project-475620"
+client = get_bigquery_client()
+
+if not client:
+    st.error("""
+    🔐 **BigQuery Connection Failed**
+    
+    Please make sure:
+    1. ✅ GCP credentials are properly set in Streamlit Cloud Secrets
+    2. ✅ Service account has BigQuery permissions
+    3. ✅ Project ID is correct
+    """)
+    st.stop()
 
 # --- APP HEADER ---
 st.markdown("""
@@ -129,20 +164,39 @@ with col6:
     st.plotly_chart(fig3, use_container_width=True)
 
 # --- MAP VISUALIZATION ---
-# --- MAP VISUALIZATION ---
 st.subheader("🗺️ Global Weather Map")
+
+# Get latest record for each city for the map
+latest_data = filtered_df.sort_values('timestamp').groupby('city').last().reset_index()
+
 fig4 = px.scatter_geo(
-    filtered_df,
+    latest_data,
     lat="lat",
     lon="lon",
     color="temperature_celsius",
     size="humidity",
     hover_name="city",
+    hover_data={
+        "temperature_celsius": True,
+        "humidity": True,
+        "wind_speed": True,
+        "weather_main": True,
+        "lat": False,
+        "lon": False
+    },
     projection="natural earth",
-    title="Temperature & Humidity by City",
+    title="Current Weather Conditions by City",
     color_continuous_scale="Plasma"
 )
-fig4.update_layout(template="plotly_white")
+fig4.update_layout(
+    template="plotly_white",
+    geo=dict(
+        showland=True,
+        landcolor="lightgreen",
+        showocean=True,
+        oceancolor="lightblue"
+    )
+)
 st.plotly_chart(fig4, use_container_width=True)
 
 
