@@ -13,3 +13,4 @@ streamlit==1.28.2
 google-cloud-bigquery==3.20.1
 google-auth==2.35.0
 google-auth-oauthlib==1.2.1
+db-dtypes==1.2.0
