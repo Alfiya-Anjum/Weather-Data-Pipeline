@@ -1,4 +1,4 @@
-# 🌦️ Global Weather Data Pipeline & Dashboard
+# Global Weather Data Pipeline & Dashboard
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
 ![Pandas](https://img.shields.io/badge/Pandas-2.1.4-green?logo=pandas)
@@ -193,6 +193,7 @@ This project is deployed on **Streamlit Cloud**:
 - [Report Bug](https://github.com/alfiya-anjum/weather-data-pipeline/issues)
 - [Request Feature](https://github.com/alfiya-anjum/weather-data-pipeline/issues)
 - [View Code](https://github.com/alfiya-anjum/weather-data-pipeline)
+
 
 
 
