@@ -11,3 +11,18 @@
 2025-10-19 22:37:38 | INFO | Successfully stored 5 weather records
 2025-10-19 22:37:38 | INFO | Collection completed successfully: {'status': 'success', 'collection_time': datetime.datetime(2025, 10, 19, 19, 37, 38, 12231), 'cities_requested': 5, 'cities_received': 5, 'records_validated': 5, 'records_stored': 5}
 2025-10-19 22:37:38 | INFO | Cleaning up pipeline resources...
+2025-10-20 09:44:22 | INFO | ✅ Weather Data Pipeline initialized successfully
+2025-10-20 09:44:22 | INFO | 🌦 Starting weather data collection for: ['London', 'New York', 'Tokyo', 'Paris', 'Sydney']
+2025-10-20 09:44:22 | INFO | Fetching weather data for London
+2025-10-20 09:44:22 | INFO | Fetching weather data for London
+2025-10-20 09:44:23 | INFO | Fetching weather data for New York
+2025-10-20 09:44:24 | INFO | Fetching weather data for Tokyo
+2025-10-20 09:44:25 | INFO | Fetching weather data for Paris
+2025-10-20 09:44:26 | INFO | Fetching weather data for Sydney
+2025-10-20 09:44:27 | INFO | Successfully fetched weather data for 5/5 cities
+2025-10-20 09:44:27 | INFO | Filtered 5/5 valid records
+2025-10-20 09:44:27 | INFO | Successfully stored 5 weather records
+2025-10-20 09:44:27 | INFO | Uploading 5 rows to weather-etl-project-475620.weather_data.weather_records
+2025-10-20 09:44:31 | INFO | ✅ Uploaded 5 rows to BigQuery table weather-etl-project-475620.weather_data.weather_records
+2025-10-20 09:44:31 | INFO | ✅ Collection completed successfully: {'status': 'success', 'collection_time': datetime.datetime(2025, 10, 20, 6, 44, 31, 679779), 'cities_requested': 5, 'records_validated': 5, 'records_stored': 5, 'records_uploaded': 5}
+2025-10-20 09:44:31 | INFO | 🧹 Cleaning up pipeline resources...
