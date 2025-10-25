@@ -144,7 +144,7 @@ Open → [http://localhost:8501](http://localhost:8501) 🌈
 ## Deployment
 
 This project is deployed on **Streamlit Cloud**:
-👉 [weather-data-pipeline.streamlit.app](https://weather-data-pipeline-q59uyqjzuwkpqtsnunuwyg.streamlit.app/)
+👉 [weather-data-pipeline.streamlit.app](https://alfiya-anjum-weather-data-pipeline-streamlit-app-v3ui9r.streamlit.app/)
 
 **Deployment features:**
 - ✅ Automatic deployments from GitHub
@@ -193,6 +193,7 @@ This project is deployed on **Streamlit Cloud**:
 - [Report Bug](https://github.com/alfiya-anjum/weather-data-pipeline/issues)
 - [Request Feature](https://github.com/alfiya-anjum/weather-data-pipeline/issues)
 - [View Code](https://github.com/alfiya-anjum/weather-data-pipeline)
+
 
 
 
