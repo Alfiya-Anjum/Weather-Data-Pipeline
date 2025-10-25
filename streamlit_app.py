@@ -129,18 +129,24 @@ with col6:
 
 # --- MAP VISUALIZATION ---
 st.subheader("🗺️ Global Weather Map")
+
 fig4 = px.scatter_geo(
     filtered_df,
-    locations="city",
-    locationmode="country names",
+    lat="lat",
+    lon="lon",
     color="temperature_celsius",
     size="humidity",
     hover_name="city",
     projection="natural earth",
     title="Temperature & Humidity by City"
 )
-fig4.update_layout(template="plotly_white")
+
+fig4.update_layout(
+    template="plotly_white",
+    geo=dict(showland=True, landcolor="lightgrey"),
+)
 st.plotly_chart(fig4, use_container_width=True)
+
 
 # --- FOOTER ---
 st.markdown("""
