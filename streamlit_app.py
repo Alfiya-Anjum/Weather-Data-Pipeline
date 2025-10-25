@@ -4,6 +4,7 @@ import pandas as pd
 import plotly.express as px
 import os
 from datetime import datetime
+from google.oauth2 import service_account
 
 # --- STREAMLIT PAGE CONFIG ---
 st.set_page_config(
@@ -15,6 +16,13 @@ st.set_page_config(
 # --- GCP SETUP ---
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "gcp_key.json"
 PROJECT_ID = "weather-etl-project-475620"
+
+# Load credentials from Streamlit secrets
+credentials = service_account.Credentials.from_service_account_info(
+    st.secrets["gcp_service_account"]
+)
+
+client = bigquery.Client(credentials=credentials, project=PROJECT_ID)
 
 # Initialize BigQuery Client
 client = bigquery.Client(project=PROJECT_ID)
