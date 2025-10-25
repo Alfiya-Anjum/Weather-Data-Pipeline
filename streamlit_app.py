@@ -25,7 +25,6 @@ credentials = service_account.Credentials.from_service_account_info(
 client = bigquery.Client(credentials=credentials, project=PROJECT_ID)
 
 # Initialize BigQuery Client
-client = bigquery.Client(project=PROJECT_ID)
 
 # --- APP HEADER ---
 st.markdown("""
